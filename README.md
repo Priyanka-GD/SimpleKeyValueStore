@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # keyvaluestore
 keyvaluestore
 =======
@@ -47,3 +48,6 @@ The application now runs on the Spring framework. User data is inserted through 
 and based on a node ID, the data is stored using a modulus operation. When a user makes a GET request with the user ID, 
 the node ID is retrieved, and the corresponding user object is returned.
 >>>>>>> master
+=======
+
+>>>>>>> d911e36d131f6a9fa7218331a24bd78965178966
