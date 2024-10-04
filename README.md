@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-# keyvaluestore
-keyvaluestore
-=======
+
 ## First Phase Commit
 # DistributedKeyValueStore
 
