@@ -21,9 +21,12 @@ public class UserService {
     public Optional<User> getUser (Integer id) {
         Optional optional = Optional.empty();
         int nodeId = id % COUNT_OF_NODES;
-        System.out.println("Node id : " + nodeId);
-        if (nodes[nodeId].mapOfUsers.containsKey(id))
+
+        if (nodes[nodeId].mapOfUsers.containsKey(id)) {
+            System.out.println("Node id : " + nodeId);
             optional = Optional.of(nodes[nodeId].mapOfUsers.get(id));
+            System.out.println("Get User : " + nodes[nodeId].mapOfUsers.get(id));
+        }
         return optional;
     }
 
@@ -33,5 +36,13 @@ public class UserService {
         nodes[nodeIdx].put(userId, newUser);
         System.out.println("User Created :" + userId);
         return newUser;
+    }
+
+    public void deleteUser (int id) {
+        int nodeIdx = id % COUNT_OF_NODES;
+        if(nodes[nodeIdx].mapOfUsers.containsKey(id)) {
+            nodes[nodeIdx].mapOfUsers.remove(id);
+            System.out.println("User id : " + id + " deleted");
+        }
     }
 }
