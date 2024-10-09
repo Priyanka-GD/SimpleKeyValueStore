@@ -39,11 +39,17 @@ This will start the program, and you can input `id` and `name` pairs as prompted
 
 
 ## Second Phase Commit -
-# Consistent Hashing
+### Consistent Hashing
 The application now runs on the Spring framework. User data is inserted through a POST request, 
 and based on a node ID, the data is stored using a modulus operation. When a user makes a GET request with the user ID, 
 the node ID is retrieved, and the corresponding user object is returned.
->>>>>>> master
-=======
 
->>>>>>> d911e36d131f6a9fa7218331a24bd78965178966
+## Third Phase Commit
+
+- Implement DataStoreDAO as interface
+- InMemoryDAO implements DataStoreDAO
+- InMemoryDAO will have a composition relationship with NodeResolver
+- InMemoryDAO should handle the responsibility of abstracting implementation details
+- NodeResolver should support getNode() for an user
+- NodeResolver is an interface
+- PO - requirement implement NodeResolver as a Modulo function - class

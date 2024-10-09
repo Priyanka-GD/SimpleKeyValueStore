@@ -35,8 +35,8 @@ public class UserService {
         dataStoreRepo.deleteUser(userId, nodes);
     }
 
-    public Optional<User>  updateUser (User updateUser) {
-        dataStoreRepo.updateUser(updateUser, nodes);
+    public Optional<User> updateUser (User updateUser) {
+        return dataStoreRepo.updateUser(updateUser, nodes);
     }
 
 }
