@@ -18,7 +18,7 @@ public class UserController {
     }
 
     @GetMapping("/user/{id}")
-    public User getUser (@PathVariable int id) {
+    public User getUser (@PathVariable String id) {
         Optional user = userService.getUser(id);
         if (user.isPresent()) {
             return (User) user.get();
@@ -34,7 +34,7 @@ public class UserController {
 
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public User updateUser (@PathVariable int id, @RequestBody User updatedUser) {
+    public User updateUser (@PathVariable String id, @RequestBody User updatedUser) {
         Optional existingUser = userService.getUser(id);
         if (existingUser.isPresent()) {
             User user = (User) existingUser.get();
@@ -47,7 +47,7 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteUser (@PathVariable int id) {
+    public void deleteUser (@PathVariable String id) {
         userService.deleteUser(id);
     }
 

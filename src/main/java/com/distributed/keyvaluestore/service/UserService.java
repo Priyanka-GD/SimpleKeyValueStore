@@ -1,14 +1,19 @@
 package com.distributed.keyvaluestore.service;
 
+import com.distributed.keyvaluestore.CommonVariables;
 import com.distributed.keyvaluestore.model.Node;
 import com.distributed.keyvaluestore.model.User;
+import com.distributed.keyvaluestore.repository.DataStoreRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.distributed.keyvaluestore.CommonVariables.COUNT_OF_NODES;
+
 @Service
 public class UserService {
-    private static final int COUNT_OF_NODES = 10;
+    private DataStoreRepo dataStoreRepo;
+
     private Node[] nodes;
 
     public UserService () {
@@ -18,31 +23,20 @@ public class UserService {
         }
     }
 
-    public Optional<User> getUser (Integer id) {
-        Optional optional = Optional.empty();
-        int nodeId = id % COUNT_OF_NODES;
-
-        if (nodes[nodeId].mapOfUsers.containsKey(id)) {
-            System.out.println("Node id : " + nodeId);
-            optional = Optional.of(nodes[nodeId].mapOfUsers.get(id));
-            System.out.println("Get User : " + nodes[nodeId].mapOfUsers.get(id));
-        }
-        return optional;
+    public Optional<User> getUser (String userId) {
+        return dataStoreRepo.getUser(userId, nodes);
     }
 
     public User addUser (User newUser) {
-        int userId = newUser.getUserId();
-        int nodeIdx = userId % COUNT_OF_NODES;
-        nodes[nodeIdx].put(userId, newUser);
-        System.out.println("User Created :" + userId);
-        return newUser;
+        return dataStoreRepo.createUser(newUser, nodes);
     }
 
-    public void deleteUser (int id) {
-        int nodeIdx = id % COUNT_OF_NODES;
-        if(nodes[nodeIdx].mapOfUsers.containsKey(id)) {
-            nodes[nodeIdx].mapOfUsers.remove(id);
-            System.out.println("User id : " + id + " deleted");
-        }
+    public void deleteUser (String userId) {
+        dataStoreRepo.deleteUser(userId, nodes);
     }
+
+    public Optional<User>  updateUser (User updateUser) {
+        dataStoreRepo.updateUser(updateUser, nodes);
+    }
+
 }
