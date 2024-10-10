@@ -12,30 +12,27 @@ import static com.distributed.keyvaluestore.CommonVariables.COUNT_OF_NODES;
 public class UserService {
     private DataStoreRepo dataStoreRepo;
 
-    private Node[] nodes;
+
 
     public UserService (DataStoreRepo dataStoreRepo) {
-        nodes = new Node[COUNT_OF_NODES];
-        for (int node = 0; node < COUNT_OF_NODES; node++) {
-            nodes[node] = new Node(node);
-        }
+
         this.dataStoreRepo = dataStoreRepo;
     }
 
     public Optional<User> getUser (String userId) {
-        return dataStoreRepo.getUser(userId, nodes);
+        return dataStoreRepo.getUser(userId);
     }
 
     public User addUser (User newUser) {
-        return dataStoreRepo.createUser(newUser, nodes);
+        return dataStoreRepo.createUser(newUser);
     }
 
     public void deleteUser (String userId) {
-        dataStoreRepo.deleteUser(userId, nodes);
+        dataStoreRepo.deleteUser(userId);
     }
 
     public Optional<User> updateUser (User updateUser) {
-        return dataStoreRepo.updateUser(updateUser, nodes);
+        return dataStoreRepo.updateUser(updateUser);
     }
 
 }

@@ -35,15 +35,16 @@ public class UserController {
 
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public User updateUser (@PathVariable String id, @RequestBody User updatedUser) {
+    public Optional<User> updateUser (@PathVariable String id, @RequestBody User updatedUser) {
         Optional existingUser = userService.getUser(id);
         if (existingUser.isPresent()) {
             User user = (User) existingUser.get();
             user.setName(updatedUser.getName());
             user.setEmail(updatedUser.getEmail());
             user.setAddress(updatedUser.getAddress());
+            return userService.updateUser(user);
         }
-        return userService.addUser(updatedUser);
+        return Optional.empty();
     }
 
     @DeleteMapping("/delete/{id}")

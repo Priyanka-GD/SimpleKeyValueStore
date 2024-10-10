@@ -6,18 +6,18 @@ import java.util.Optional;
 
 public class Node {
     private int nodeId;
-    public Map<Integer, User> mapOfUsers;
+    public Map<String, User> mapOfUsers;
 
     public Node (int nodeId) {
         this.nodeId = nodeId;
         this.mapOfUsers = new HashMap<>();
     }
 
-    public synchronized void put (int nodeId, User user) {
-        this.mapOfUsers.put(nodeId, user);
+    public synchronized void put (String userId, User user) {
+        this.mapOfUsers.put(userId, user);
     }
 
-    public synchronized Optional get (int userId) {
+    public synchronized Optional get (String userId) {
         Optional optional = Optional.empty();
         if (this.mapOfUsers.containsKey(userId)) {
             optional = Optional.of(this.mapOfUsers.get(userId));

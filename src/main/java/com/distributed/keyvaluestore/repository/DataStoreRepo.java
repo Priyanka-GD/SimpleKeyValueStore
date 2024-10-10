@@ -6,11 +6,11 @@ import com.distributed.keyvaluestore.model.User;
 import java.util.Optional;
 
 public interface DataStoreRepo {
-    User createUser (User user,  Node[] nodes);
+    User createUser (User user);
 
-    Optional<User>  updateUser (User user, Node[] nodes);
+    Optional<User>  updateUser (User user);
 
-    Optional<User> getUser (String userId, Node[] nodes);
+    Optional<User> getUser (String userId);
 
-    void deleteUser (String userId,  Node[] nodes);
+    void deleteUser (String userId);
 }
