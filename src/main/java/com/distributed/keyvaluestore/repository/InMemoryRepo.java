@@ -3,7 +3,6 @@ package com.distributed.keyvaluestore.repository;
 import com.distributed.keyvaluestore.model.Node;
 import com.distributed.keyvaluestore.model.User;
 import org.springframework.stereotype.Repository;
-
 import java.util.Optional;
 
 import static com.distributed.keyvaluestore.CommonVariables.COUNT_OF_NODES;

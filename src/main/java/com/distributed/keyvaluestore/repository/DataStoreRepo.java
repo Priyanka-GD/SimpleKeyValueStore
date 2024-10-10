@@ -1,8 +1,6 @@
 package com.distributed.keyvaluestore.repository;
 
-import com.distributed.keyvaluestore.model.Node;
 import com.distributed.keyvaluestore.model.User;
-
 import java.util.Optional;
 
 public interface DataStoreRepo {

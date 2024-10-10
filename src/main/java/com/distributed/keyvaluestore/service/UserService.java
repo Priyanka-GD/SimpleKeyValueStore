@@ -1,12 +1,9 @@
 package com.distributed.keyvaluestore.service;
-import com.distributed.keyvaluestore.model.Node;
 import com.distributed.keyvaluestore.model.User;
 import com.distributed.keyvaluestore.repository.DataStoreRepo;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
-import static com.distributed.keyvaluestore.CommonVariables.COUNT_OF_NODES;
 
 @Service
 public class UserService {
