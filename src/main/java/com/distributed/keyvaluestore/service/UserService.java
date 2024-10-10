@@ -1,6 +1,4 @@
 package com.distributed.keyvaluestore.service;
-
-import com.distributed.keyvaluestore.CommonVariables;
 import com.distributed.keyvaluestore.model.Node;
 import com.distributed.keyvaluestore.model.User;
 import com.distributed.keyvaluestore.repository.DataStoreRepo;
@@ -16,11 +14,12 @@ public class UserService {
 
     private Node[] nodes;
 
-    public UserService () {
+    public UserService (DataStoreRepo dataStoreRepo) {
         nodes = new Node[COUNT_OF_NODES];
         for (int node = 0; node < COUNT_OF_NODES; node++) {
             nodes[node] = new Node(node);
         }
+        this.dataStoreRepo = dataStoreRepo;
     }
 
     public Optional<User> getUser (String userId) {

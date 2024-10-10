@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/users")
 public class UserController {
     private UserService userService;
 
@@ -17,7 +18,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public User getUser (@PathVariable String id) {
         Optional user = userService.getUser(id);
         if (user.isPresent()) {
@@ -26,7 +27,7 @@ public class UserController {
         return null;
     }
 
-    @PostMapping("/user/add")
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public User addUser (@RequestBody User newUser) {
         return userService.addUser(newUser);

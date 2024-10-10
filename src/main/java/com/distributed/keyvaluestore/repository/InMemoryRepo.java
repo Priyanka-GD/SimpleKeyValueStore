@@ -2,12 +2,13 @@ package com.distributed.keyvaluestore.repository;
 
 import com.distributed.keyvaluestore.model.Node;
 import com.distributed.keyvaluestore.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Repository
 public class InMemoryRepo implements DataStoreRepo {
     private NodeResolverRepo nodeResolverRepo;
-
 
     public InMemoryRepo (NodeResolverRepo nodeResolverRepo) {
         this.nodeResolverRepo = nodeResolverRepo;
