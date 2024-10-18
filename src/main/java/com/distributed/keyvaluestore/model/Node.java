@@ -24,4 +24,8 @@ public class Node {
         }
         return optional;
     }
+
+    public int getNodeId () {
+        return nodeId;
+    }
 }

@@ -1,10 +1,15 @@
 package com.distributed.keyvaluestore.controller;
 
+import com.distributed.keyvaluestore.demo.Master;
 import com.distributed.keyvaluestore.model.User;
 import com.distributed.keyvaluestore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -51,5 +56,4 @@ public class UserController {
     public void deleteUser (@PathVariable String id) {
         userService.deleteUser(id);
     }
-
 }
